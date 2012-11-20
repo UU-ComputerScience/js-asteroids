@@ -20722,4 +20722,3 @@ $Asteroids.$main=
 var $main=
  new _A_(new _F_(function()
                  {return new _A_($UHC.$Run.$ehcRunMain,[$Asteroids.$main]);}),[]);
-_e_(new _A_($main,[[]]));
