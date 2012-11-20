@@ -8812,7 +8812,7 @@ $UHC.$Base.$or=
                  {return new _A_($UHC.$Base.$foldr,[$UHC.$Base.$_7c_7c,$UHC.$Base.$False__]);}),[]);
 $Asteroids.$__55__35=
  new _A_(new _F_(function()
-                 {return new _A_($UHC.$Base.$packedStringToString,["../resources/ship.ico"]);}),[]);
+                 {return new _A_($UHC.$Base.$packedStringToString,["ship.ico"]);}),[]);
 $Asteroids.$ship=
  new _A_(new _F_(function()
                  {return new _A_($Graphics.$UI.$WX.$Media.$bitmap,[$Asteroids.$__55__35]);}),[]);
@@ -8859,7 +8859,7 @@ $UHC.$Base.$mapM=
           return new _A_($UHC.$Base.$_2e,[$__4,$__3]);});
 $Asteroids.$__55__59=
  new _A_(new _F_(function()
-                 {return new _A_($UHC.$Base.$packedStringToString,["../resources/rock.ico"]);}),[]);
+                 {return new _A_($UHC.$Base.$packedStringToString,["rock.ico"]);}),[]);
 $Asteroids.$rock=
  new _A_(new _F_(function()
                  {return new _A_($Graphics.$UI.$WX.$Media.$bitmap,[$Asteroids.$__55__59]);}),[]);
@@ -8939,7 +8939,7 @@ $Graphics.$UI.$WX.$Media.$bitmap=
           return new _A_($UHC.$IOBase.$unsafePerformIO,[$__4]);});
 $Asteroids.$__55__115=
  new _A_(new _F_(function()
-                 {return new _A_($UHC.$Base.$packedStringToString,["../resources/burning.ico"]);}),[]);
+                 {return new _A_($UHC.$Base.$packedStringToString,["burning.ico"]);}),[]);
 $Asteroids.$burning=
  new _A_(new _F_(function()
                  {return new _A_($Graphics.$UI.$WX.$Media.$bitmap,[$Asteroids.$__55__115]);}),[]);
