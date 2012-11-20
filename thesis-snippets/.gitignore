@@ -1,0 +1,11 @@
+*.c
+*.o
+*.class
+*.core
+*.hi
+*.grin
+*.swp
+*-cpp.hs
+*.hs-cpp
+*~
+*.mjs

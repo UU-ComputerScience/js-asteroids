@@ -1,0 +1,559 @@
+% This file is in the public domain.
+% Sean Leather, 2010 March 10
+
+%include polycode.fmt
+%% %include spacing.fmt
+
+%-------------------------------------------------------------------------------
+% Colors
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+% Char literal
+\colorlet{Char}{green!45!black}
+
+% String literal
+\colorlet{String}{green!45!black}
+
+% Numeral literal
+\colorlet{Numeral}{green!45!black}
+
+% Keyword
+\colorlet{Keyword}{blue!45!black}
+
+% Module identifier
+\colorlet{ModId}{Char}
+
+% Variable identifier and symbol
+\colorlet{VarId}{black}
+\colorlet{VarSym}{black}
+
+% Data constructor identifier and symbol
+\colorlet{ConId}{VarId}
+\colorlet{ConSym}{ConId}
+
+% Type variable identifier
+\colorlet{TVarId}{blue!45!black}
+
+% Type constructor identifier
+\colorlet{TConId}{TVarId}
+\colorlet{TConSym}{TConId}
+
+% Type class identifier
+\colorlet{TClassId}{red!80!black}
+
+% Comment
+\colorlet{Comment}{gray}
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Basic commands for fonts and other formatting
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+% Char literal
+\newcommand\Char[1]{\textcolor{Char}{\texttt{#1}}}
+
+% Numeral literal
+\newcommand\Numeral[1]{\textcolor{Numeral}{#1}}
+
+% Keyword
+\newcommand\Keyword[1]{\textcolor{Keyword}{#1}}
+
+% Module identifier
+\newcommand\ModId[1]{\mathord{\textcolor{ModId}{\mathit{#1}}}}
+
+% Variable identifier and symbol
+\newcommand\VarId[1]{\mathord{\textcolor{VarId}{\mathit{#1}}}}
+\let\Varid\VarId
+\newcommand\VarSym[1]{\mathbin{\textcolor{VarSym}{\mathit{#1}}}}
+
+% Data constructor identifier and symbol
+\newcommand\ConId[1]{\mathord{\textcolor{ConId}{\mathit{#1}}}}
+\let\Conid\ConId
+\newcommand\ConSym[1]{\mathbin{\textcolor{ConSym}{\mathit{#1}}}}
+
+% Type variable identifier
+\newcommand\TVarId[1]{\mathord{\textcolor{TVarId}{\mathit{#1}}}}
+
+% Type constructor identifier
+\newcommand\TConId[1]{\mathord{\textcolor{TConId}{\mathit{#1}}}}
+% \newcommand\TConSym[1]{\mathbin{#1}}
+\newcommand\TConSym[1]{\mathbin{\textcolor{TConSym}{\mathit{#1}}}}
+
+% Type class identifier
+\newcommand\TClassId[1]{\mathord{\textcolor{TClassId}{\textit{#1}}}}
+
+% Comment
+\newcommand\Comment[1]{\textcolor{Comment}{\textit{#1}}}
+
+% Package identifier (used in text, not code/math environment)
+\newcommand\PkgId[1]{\textcolor{Char}{\texttt{#1}}}
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Substitutions
+%-------------------------------------------------------------------------------
+
+% Set the basic substitution directives to use a sans-serif font.
+
+%if style == poly
+
+%subst numeral a                = "\Numeral{" a "}"
+%subst char a             = "\Char{''" a "''}"
+%subst string a           = "\Char{\char34 " a "\char34}"
+
+%subst keyword a                = "\Keyword{" a "}"
+%subst varsym a                 = "\VarSym{" a "}"
+%subst consym a                 = "\ConSym{" a "}"
+
+% Comments: one-line, nested, pragmas
+
+%subst comment a                = "\Comment{  -{}-\enskip " a "}"
+%subst nested a                   = "\Comment{\{-\enskip " a "\enskip-\}}"
+%subst pragma a                 = "\Comment{\{-\#\enskip " a "\enskip\#-\}}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Utility
+%-------------------------------------------------------------------------------
+
+% Dots - ellipsis for omitted code
+
+%if style == newcode
+%format dots                    = " "
+%elif style == poly
+%format dots                    = "\dots"
+%endif
+
+% Remove vertical space
+
+%if style == newcode
+%format >-<                     =
+%elif style == poly
+%format >-<                     = "\vspace{-1pt} "
+%endif
+
+%-------------------------------------------------------------------------------
+% Keywords
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format qualified               = "\Keyword{qualified}"
+%format forall                  = "\Keyword{forall}"
+
+%endif
+
+% Prevent conflict with typical use of 'as'
+%if style == newcode
+%format as_                     = "as"
+%elif style == poly
+%format as_                     = "\Keyword{as}"
+%endif
+
+%-------------------------------------------------------------------------------
+% Common symbol variables
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+% Due to Jeremy Gibbons
+\def\doubleequals{\mathrel{\unitlength 0.01em
+  \begin{picture}(78,40)
+    \put(7,34){\line(1,0){25}} \put(45,34){\line(1,0){25}}
+    \put(7,14){\line(1,0){25}} \put(45,14){\line(1,0){25}}
+  \end{picture}}}
+
+%format ==                      = "\doubleequals "
+%format /=                      = "\not\doubleequals "
+
+
+%format .                       = "\circ "
+% format .                       = "\cdot "
+
+%endif
+
+% Dot - for use with forall
+
+%format ..                      = "."
+
+% Exponentiation - avoid conflict with spacing.fmt
+
+%if style == newcode
+%format exp1                    = "^"
+%format exp2                    = "^^"
+%elif style == poly
+%format exp1                    = "^"
+%format exp2                    = "^^"
+%endif
+
+%format family                  = "\Keyword{family}"
+
+%-------------------------------------------------------------------------------
+% Common module names
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format Control.Arrow           = "\ModId{Control.Arrow}"
+%format Control.Monad           = "\ModId{Control.Monad}"
+%format Data.Array              = "\ModId{Data.Array}"
+%format Data.Array.IArray       = "\ModId{Data.Array.IArray}"
+%format Data.List               = "\ModId{Data.List}"
+%format Data.Map                = "\ModId{Data.Map}"
+%format Data.Maybe              = "\ModId{Data.Maybe}"
+%format Data.Set                = "\ModId{Data.Set}"
+%format Prelude                 = "\ModId{Prelude}"
+%format Network.URI             = "\ModId{Network.URI}"
+%format Text.Html               = "\ModId{Text.Html}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Common type names
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format Bool                    = "\TConId{Bool}"
+%format Char                    = "\TConId{Char}"
+%format Int                     = "\TConId{Int}"
+%format Integer                 = "\TConId{Integer}"
+%format IO                      = "\TConId{IO}"
+%format Double                  = "\TConId{Double}"
+%format Either                  = "\TConId{Either}"
+%format Float                   = "\TConId{Float}"
+%format Map                     = "\TConId{Map}"
+%format Maybe                   = "\TConId{Maybe}"
+%format Set                     = "\TConId{Set}"
+%format String                  = "\TConId{String}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Common class names
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format Arrow                   = "\TClassId{Arrow}"
+%format Eq                      = "\TClassId{Eq}"
+%format Functor                 = "\TClassId{Functor}"
+%format Monad                   = "\TClassId{Monad}"
+%format Num                     = "\TClassId{Num}"
+%format Ord                     = "\TClassId{Ord}"
+%format Read                    = "\TClassId{Read}"
+%format Show                    = "\TClassId{Show}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Types with single letters
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format AA                      = "\TConId{A}"
+%format BB                      = "\TConId{B}"
+%format CC                      = "\TConId{C}"
+%format DD                      = "\TConId{D}"
+%format EE                      = "\TConId{E}"
+%format FF                      = "\TConId{F}"
+%format GG                      = "\TConId{G}"
+%format HH                      = "\TConId{H}"
+%format II                      = "\TConId{I}"
+%format JJ                      = "\TConId{J}"
+%format KK                      = "\TConId{K}"
+%format LL                      = "\TConId{L}"
+%format MM                      = "\TConId{M}"
+%format NN                      = "\TConId{N}"
+%format OO                      = "\TConId{O}"
+%format PP                      = "\TConId{P}"
+%format QQ                      = "\TConId{Q}"
+%format RR                      = "\TConId{R}"
+%format SS                      = "\TConId{S}"
+%format TT                      = "\TConId{T}"
+%format UU                      = "\TConId{U}"
+%format VV                      = "\TConId{V}"
+%format WW                      = "\TConId{W}"
+%format XX                      = "\TConId{X}"
+%format YY                      = "\TConId{Y}"
+%format ZZ                      = "\TConId{Z}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Type variables
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format aa                      = "\TVarId{a}"
+%format bb                      = "\TVarId{b}"
+%format cc                      = "\TVarId{c}"
+%format dd                      = "\TVarId{d}"
+%format ee                      = "\TVarId{e}"
+%format ff                      = "\TVarId{f}"
+%format gg                      = "\TVarId{g}"
+%format hh                      = "\TVarId{h}"
+%format ii                      = "\TVarId{i}"
+%format jj                      = "\TVarId{j}"
+%format kk                      = "\TVarId{k}"
+%format ll                      = "\TVarId{l}"
+%format mm                      = "\TVarId{m}"
+%format nn                      = "\TVarId{n}"
+%format oo                      = "\TVarId{o}"
+%format pp                      = "\TVarId{p}"
+%format qq                      = "\TVarId{q}"
+%format rr                      = "\TVarId{r}"
+%format ss                      = "\TVarId{s}"
+%format tt                      = "\TVarId{t}"
+%format uu                      = "\TVarId{u}"
+%format vv                      = "\TVarId{v}"
+%format ww                      = "\TVarId{w}"
+%format xx                      = "\TVarId{x}"
+%format yy                      = "\TVarId{y}"
+%format zz                      = "\TVarId{z}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Type variables with subscript indexes
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format aa0                     = "\TVarId{a_0}"
+%format bb0                     = "\TVarId{b_0}"
+%format cc0                     = "\TVarId{c_0}"
+%format dd0                     = "\TVarId{d_0}"
+%format ee0                     = "\TVarId{e_0}"
+%format ff0                     = "\TVarId{f_0}"
+%format gg0                     = "\TVarId{g_0}"
+%format hh0                     = "\TVarId{h_0}"
+%format ii0                     = "\TVarId{i_0}"
+%format jj0                     = "\TVarId{j_0}"
+%format kk0                     = "\TVarId{k_0}"
+%format ll0                     = "\TVarId{l_0}"
+%format mm0                     = "\TVarId{m_0}"
+%format nn0                     = "\TVarId{n_0}"
+%format oo0                     = "\TVarId{o_0}"
+%format pp0                     = "\TVarId{p_0}"
+%format qq0                     = "\TVarId{q_0}"
+%format rr0                     = "\TVarId{r_0}"
+%format ss0                     = "\TVarId{s_0}"
+%format tt0                     = "\TVarId{t_0}"
+%format uu0                     = "\TVarId{u_0}"
+%format vv0                     = "\TVarId{v_0}"
+%format ww0                     = "\TVarId{w_0}"
+%format xx0                     = "\TVarId{x_0}"
+%format yy0                     = "\TVarId{y_0}"
+%format zz0                     = "\TVarId{z_0}"
+
+%format aa1                     = "\TVarId{a_1}"
+%format bb1                     = "\TVarId{b_1}"
+%format cc1                     = "\TVarId{c_1}"
+%format dd1                     = "\TVarId{d_1}"
+%format ee1                     = "\TVarId{e_1}"
+%format ff1                     = "\TVarId{f_1}"
+%format gg1                     = "\TVarId{g_1}"
+%format hh1                     = "\TVarId{h_1}"
+%format ii1                     = "\TVarId{i_1}"
+%format jj1                     = "\TVarId{j_1}"
+%format kk1                     = "\TVarId{k_1}"
+%format ll1                     = "\TVarId{l_1}"
+%format mm1                     = "\TVarId{m_1}"
+%format nn1                     = "\TVarId{n_1}"
+%format oo1                     = "\TVarId{o_1}"
+%format pp1                     = "\TVarId{p_1}"
+%format qq1                     = "\TVarId{q_1}"
+%format rr1                     = "\TVarId{r_1}"
+%format ss1                     = "\TVarId{s_1}"
+%format tt1                     = "\TVarId{t_1}"
+%format uu1                     = "\TVarId{u_1}"
+%format vv1                     = "\TVarId{v_1}"
+%format ww1                     = "\TVarId{w_1}"
+%format xx1                     = "\TVarId{x_1}"
+%format yy1                     = "\TVarId{y_1}"
+%format zz1                     = "\TVarId{z_1}"
+
+%format aa2                     = "\TVarId{a_2}"
+%format bb2                     = "\TVarId{b_2}"
+%format cc2                     = "\TVarId{c_2}"
+%format dd2                     = "\TVarId{d_2}"
+%format ee2                     = "\TVarId{e_2}"
+%format ff2                     = "\TVarId{f_2}"
+%format gg2                     = "\TVarId{g_2}"
+%format hh2                     = "\TVarId{h_2}"
+%format ii2                     = "\TVarId{i_2}"
+%format jj2                     = "\TVarId{j_2}"
+%format kk2                     = "\TVarId{k_2}"
+%format ll2                     = "\TVarId{l_2}"
+%format mm2                     = "\TVarId{m_2}"
+%format nn2                     = "\TVarId{n_2}"
+%format oo2                     = "\TVarId{o_2}"
+%format pp2                     = "\TVarId{p_2}"
+%format qq2                     = "\TVarId{q_2}"
+%format rr2                     = "\TVarId{r_2}"
+%format ss2                     = "\TVarId{s_2}"
+%format tt2                     = "\TVarId{t_2}"
+%format uu2                     = "\TVarId{u_2}"
+%format vv2                     = "\TVarId{v_2}"
+%format ww2                     = "\TVarId{w_2}"
+%format xx2                     = "\TVarId{x_2}"
+%format yy2                     = "\TVarId{y_2}"
+%format zz2                     = "\TVarId{z_2}"
+
+%format aa3                     = "\TVarId{a_3}"
+%format bb3                     = "\TVarId{b_3}"
+%format cc3                     = "\TVarId{c_3}"
+%format dd3                     = "\TVarId{d_3}"
+%format ee3                     = "\TVarId{e_3}"
+%format ff3                     = "\TVarId{f_3}"
+%format gg3                     = "\TVarId{g_3}"
+%format hh3                     = "\TVarId{h_3}"
+%format ii3                     = "\TVarId{i_3}"
+%format jj3                     = "\TVarId{j_3}"
+%format kk3                     = "\TVarId{k_3}"
+%format ll3                     = "\TVarId{l_3}"
+%format mm3                     = "\TVarId{m_3}"
+%format nn3                     = "\TVarId{n_3}"
+%format oo3                     = "\TVarId{o_3}"
+%format pp3                     = "\TVarId{p_3}"
+%format qq3                     = "\TVarId{q_3}"
+%format rr3                     = "\TVarId{r_3}"
+%format ss3                     = "\TVarId{s_3}"
+%format tt3                     = "\TVarId{t_3}"
+%format uu3                     = "\TVarId{u_3}"
+%format vv3                     = "\TVarId{v_3}"
+%format ww3                     = "\TVarId{w_3}"
+%format xx3                     = "\TVarId{x_3}"
+%format yy3                     = "\TVarId{y_3}"
+%format zz3                     = "\TVarId{z_3}"
+
+%endif
+
+%-------------------------------------------------------------------------------
+% Value variables with subscript indexes
+%-------------------------------------------------------------------------------
+
+%if style == poly
+
+%format a0                      = "\VarId{a_0}"
+%format b0                      = "\VarId{b_0}"
+%format c0                      = "\VarId{c_0}"
+%format d0                      = "\VarId{d_0}"
+%format e0                      = "\VarId{e_0}"
+%format f0                      = "\VarId{f_0}"
+%format g0                      = "\VarId{g_0}"
+%format h0                      = "\VarId{h_0}"
+%format i0                      = "\VarId{i_0}"
+%format j0                      = "\VarId{j_0}"
+%format k0                      = "\VarId{k_0}"
+%format l0                      = "\VarId{l_0}"
+%format m0                      = "\VarId{m_0}"
+%format n0                      = "\VarId{n_0}"
+%format o0                      = "\VarId{o_0}"
+%format p0                      = "\VarId{p_0}"
+%format q0                      = "\VarId{q_0}"
+%format r0                      = "\VarId{r_0}"
+%format s0                      = "\VarId{s_0}"
+%format t0                      = "\VarId{t_0}"
+%format u0                      = "\VarId{u_0}"
+%format v0                      = "\VarId{v_0}"
+%format w0                      = "\VarId{w_0}"
+%format x0                      = "\VarId{x_0}"
+%format y0                      = "\VarId{y_0}"
+%format z0                      = "\VarId{z_0}"
+
+%format a1                      = "\VarId{a_1}"
+%format b1                      = "\VarId{b_1}"
+%format c1                      = "\VarId{c_1}"
+%format d1                      = "\VarId{d_1}"
+%format e1                      = "\VarId{e_1}"
+%format f1                      = "\VarId{f_1}"
+%format g1                      = "\VarId{g_1}"
+%format h1                      = "\VarId{h_1}"
+%format i1                      = "\VarId{i_1}"
+%format j1                      = "\VarId{j_1}"
+%format k1                      = "\VarId{k_1}"
+%format l1                      = "\VarId{l_1}"
+%format m1                      = "\VarId{m_1}"
+%format n1                      = "\VarId{n_1}"
+%format o1                      = "\VarId{o_1}"
+%format p1                      = "\VarId{p_1}"
+%format q1                      = "\VarId{q_1}"
+%format r1                      = "\VarId{r_1}"
+%format s1                      = "\VarId{s_1}"
+%format t1                      = "\VarId{t_1}"
+%format u1                      = "\VarId{u_1}"
+%format v1                      = "\VarId{v_1}"
+%format w1                      = "\VarId{w_1}"
+%format x1                      = "\VarId{x_1}"
+%format y1                      = "\VarId{y_1}"
+%format z1                      = "\VarId{z_1}"
+
+%format a2                      = "\VarId{a_2}"
+%format b2                      = "\VarId{b_2}"
+%format c2                      = "\VarId{c_2}"
+%format d2                      = "\VarId{d_2}"
+%format e2                      = "\VarId{e_2}"
+%format f2                      = "\VarId{f_2}"
+%format g2                      = "\VarId{g_2}"
+%format h2                      = "\VarId{h_2}"
+%format i2                      = "\VarId{i_2}"
+%format j2                      = "\VarId{j_2}"
+%format k2                      = "\VarId{k_2}"
+%format l2                      = "\VarId{l_2}"
+%format m2                      = "\VarId{m_2}"
+%format n2                      = "\VarId{n_2}"
+%format o2                      = "\VarId{o_2}"
+%format p2                      = "\VarId{p_2}"
+%format q2                      = "\VarId{q_2}"
+%format r2                      = "\VarId{r_2}"
+%format s2                      = "\VarId{s_2}"
+%format t2                      = "\VarId{t_2}"
+%format u2                      = "\VarId{u_2}"
+%format v2                      = "\VarId{v_2}"
+%format w2                      = "\VarId{w_2}"
+%format x2                      = "\VarId{x_2}"
+%format y2                      = "\VarId{y_2}"
+%format z2                      = "\VarId{z_2}"
+
+%format a3                      = "\VarId{a_3}"
+%format b3                      = "\VarId{b_3}"
+%format c3                      = "\VarId{c_3}"
+%format d3                      = "\VarId{d_3}"
+%format e3                      = "\VarId{e_3}"
+%format f3                      = "\VarId{f_3}"
+%format g3                      = "\VarId{g_3}"
+%format h3                      = "\VarId{h_3}"
+%format i3                      = "\VarId{i_3}"
+%format j3                      = "\VarId{j_3}"
+%format k3                      = "\VarId{k_3}"
+%format l3                      = "\VarId{l_3}"
+%format m3                      = "\VarId{m_3}"
+%format n3                      = "\VarId{n_3}"
+%format o3                      = "\VarId{o_3}"
+%format p3                      = "\VarId{p_3}"
+%format q3                      = "\VarId{q_3}"
+%format r3                      = "\VarId{r_3}"
+%format s3                      = "\VarId{s_3}"
+%format t3                      = "\VarId{t_3}"
+%format u3                      = "\VarId{u_3}"
+%format v3                      = "\VarId{v_3}"
+%format w3                      = "\VarId{w_3}"
+%format x3                      = "\VarId{x_3}"
+%format y3                      = "\VarId{y_3}"
+%format z3                      = "\VarId{z_3}"
+
+%format an                      = "\VarId{a_n}"
+
+%endif
+

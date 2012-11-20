@@ -1,0 +1,15 @@
+*.c
+*.o
+*.class
+*.core
+*.hi
+*.grin
+*.swp
+*-cpp.hs
+*.hs-cpp
+*~
+*.mjs
+*sublime*
+src/Asteroids.html
+src/Asteroids.js
+deps
