@@ -1,7 +1,9 @@
 JS Asteroids
 ============
 
-An implementation of wxAsteroids in javascript using UHC (Utrecht Haskell Compiler).
+An implementation of wxAsteroids in Javascript using UHC (Utrecht Haskell Compiler).
+See the [github page](http://uu-computerscience.github.com/js-asteroids/) for a short
+intro.
 
 Navigate into the following directories for more elaborate information:
 
@@ -11,5 +13,4 @@ Navigate into the following directories for more elaborate information:
 * wxasteroids    : A port of wxAsteroids to the web browser
 * thesis-snippets: The code snippets contained in the thesis 
 
-For more information see: [introduction](http://uu-computerscience.github.com/js-asteroids/)
 
