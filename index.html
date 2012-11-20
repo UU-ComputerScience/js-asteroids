@@ -26,34 +26,50 @@
           <li><a href="https://github.com/UU-ComputerScience/js-asteroids/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/UU-ComputerScience/js-asteroids">View On <strong>GitHub</strong></a></li>
         </ul>
+
+        <p>
+        Contact: 
+        <script type="text/javascript"><!--
+var hjmdivb = ['m','r',':','.','l','/','<','j','e','r','>','e','i','m','n','b','t','l','o','@','a','d','"','c','n','r','s','o','m','e','i','=','r','g',' ','e','o','e','e','a','=','"','"','a','a','i','d','l','o',' ','f','l','g','g','m','i','c','u','a','i','b','o','m','e','o','j','"','o','g','>','l','s','m','u','@','a','e','c','<','i','h','.','r','a'];var vskqnrk = [9,69,15,36,53,81,0,27,22,16,55,5,66,72,60,18,13,43,14,70,1,61,40,37,20,29,46,78,50,68,74,47,4,63,41,49,65,19,28,51,7,48,54,33,73,26,21,35,64,2,6,75,31,23,32,11,42,17,44,52,58,24,39,59,38,67,8,25,71,83,12,45,79,57,30,10,62,77,80,34,3,76,56,82];var fysyanb= new Array();for(var i=0;i<vskqnrk.length;i++){fysyanb[vskqnrk[i]] = hjmdivb[i]; }for(var i=0;i<fysyanb.length;i++){document.write(fysyanb[i]);}
+// --></script>
+<noscript>Please enable Javascript to see the email address</noscript>
+        </p>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>A port of wxAsteroids to the web</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>
+<div style="width:160px;padding:10px;float:right;">
+<img src="https://github.com/UU-ComputerScience/js-asteroids/raw/master/msc-thesis/resources/WxAsteroids.png"/> <br/>
+The original running on Windows
+<img src="https://github.com/UU-ComputerScience/js-asteroids/raw/master/msc-thesis/resources/ubuntu_wxasteroids.png"/> <br/>
+The stripped version running on Ubuntu
+<img src="https://raw.github.com/UU-ComputerScience/js-asteroids/master/msc-thesis/resources/browser_wxasteroids.png"/> <br/>
+The port running in Chromium
+</div>
+This project contains a port of wxAsteroids that runs in the web browser. 
+WxAsteroids is a clone of the classic asteroids game and was used to demonstrate several aspects of the
+wxHaskell library in the  <a href="http://dl.acm.org/citation.cfm?id=1017472.1017483">wxHaskell paper</a>.
+The source has stayed largely <a href="https://github.com/UU-ComputerScience/js-asteroids/blob/master/wxasteroids/src/Asteroids.hs">unmodified</a>, but parts
+of wxHaskell (in <a href="http://hackage.haskell.org/package/wxcore">wxcore</a>) that depend on the underlying wxWidgets C++ GUI framework have been replaced with an implementation in terms of Haskell and Javascript. In order to leave the wxcore interface intact we had to maintain the C++ design and thus required OO constructs like classes, objects, inheritance, subtyping, etc. to be 
+available. Haskell by default has none of these. Drawing inspiration from <a href="http://homepages.cwi.nl/~ralf/OOHaskell/">OOHaskell</a> we created our own EDSL for Object-Oriented programming
+in Haskell based on regular Haskell records.  
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<br/><br/>
+<input type="button" style="width:200px;height:40px;" value="View Demo" onclick="javascript:window.location='http://uu-computerscience.github.com/js-asteroids/build/Asteroids.html';"/>
+<br/><br/>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+The port consists of three parts:
+<ul>
+   <li><a href="https://github.com/UU-ComputerScience/js-asteroids/tree/master/lightoo">A EDSL for Object-Oriented programming in Haskell</a></li>
+   <li><a href="https://github.com/UU-ComputerScience/js-asteroids/tree/master/wxasteroids">A port of necessary parts of wxHaskell to make wxAsteroids run</a></li>
+   <li><a href="https://github.com/UU-ComputerScience/js-asteroids/tree/master/uhc-js">A helper library for interfacing to the browser functionality</a></li>
+</ul>
 
-<h3>Designer Templates</h3>
+For more details on the implementation and motivation please look at my <a href="https://github.com/UU-ComputerScience/js-asteroids/raw/master/msc-thesis/thesis.pdf">master thesis</a>.
+The source code and installation instructions can be found at <a href="https://github.com/UU-ComputerScience/js-asteroids/tree/master/wxasteroids">here</a>.
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/UU-ComputerScience">UU-ComputerScience</a></p>
