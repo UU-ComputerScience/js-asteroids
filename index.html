@@ -37,7 +37,7 @@ var hjmdivb = ['m','r',':','.','l','/','<','j','e','r','>','e','i','m','n','b','
         </p>
       </header>
       <section>
-        <h3>A port of wxAsteroids to the web</h3>
+        <h3>wxAsteroids on the web</h3>
 
 <p>
 <div style="width:160px;padding:10px;float:right;">
@@ -48,14 +48,16 @@ The stripped version running on Ubuntu
 <img src="https://raw.github.com/UU-ComputerScience/js-asteroids/master/msc-thesis/resources/browser_wxasteroids.png"/> <br/>
 The port running in Chromium
 </div>
-This project contains a port of wxAsteroids that runs in the web browser. 
-WxAsteroids is a clone of the classic asteroids game and was used to demonstrate several aspects of the
-wxHaskell library in the  <a href="http://dl.acm.org/citation.cfm?id=1017472.1017483">wxHaskell paper</a>.
-The source has stayed largely <a href="https://github.com/UU-ComputerScience/js-asteroids/blob/master/wxasteroids/src/Asteroids.hs">unmodified</a>, but parts
-of wxHaskell (in <a href="http://hackage.haskell.org/package/wxcore">wxcore</a>) that depend on the underlying wxWidgets C++ GUI framework have been replaced with an implementation in terms of Haskell and Javascript. In order to leave the wxcore interface intact we had to maintain the C++ design and thus required Object-Oriented (OO) constructs like classes, objects, inheritance, subtyping, etc. to be 
-available. By default Haskell has none of these, however the authors of <a href="http://homepages.cwi.nl/~ralf/OOHaskell/">OOHaskell</a> show that these features can be implemented in Haskell without
-the need for language extensions. Inspired by their work we created our own library for OO programming in Haskell based on regular Haskell records, which we used to implement a subset of
-wxWidgets in Haskell. 
+ The original <a
+   href="http://dl.acm.org/citation.cfm?id=1017472.1017483">wxAsteroids</a>
+ is a clone of the famous astroids game
+ implemented in Haskell interfacing to the underlying C++ wxWidgets
+ library and only runs on a desktop PC. The web port is accomplished by replacing a limited subset of wxWidgets
+ with a Haskell implementation and uses the Utrecht Haskell Compiler
+ (UHC)
+ to compile the sources down to JavaScript. The key enabler is a
+ library for OOP programming in Haskell which allowed
+ the existing OO interface to remain intact while swapping out the implementation.
 
 <br/><br/>
 <input type="button" style="width:200px;height:40px;" value="View Demo" onclick="javascript:window.location='http://uu-computerscience.github.com/js-asteroids/build/Asteroids.html';"/>
